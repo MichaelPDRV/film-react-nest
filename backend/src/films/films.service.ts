@@ -1,10 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { FilmsDataDto, ScheduleDataDto } from './dto/films.dto';
-import { FilmsRepository } from '../repository/films.repository';
+import { IFilmsRepository } from '../repository/films.repository.interface';
 
 @Injectable()
 export class FilmsService {
-  constructor(private readonly filmsRepository: FilmsRepository) {}
+  constructor(
+    @Inject('IFilmsRepository')
+    private readonly filmsRepository: IFilmsRepository,
+  ) {}
 
   async getFilms(): Promise<FilmsDataDto> {
     return this.filmsRepository.getAllFilms();

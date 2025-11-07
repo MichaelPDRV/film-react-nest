@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Film } from './film.schema';
+import { Film as FilmMongo } from './film.schema';
 import { FilmDto, SessionDto } from '../films/dto/films.dto';
+import { IFilmsRepository } from './films.repository.interface';
 
 @Injectable()
-export class FilmsRepository {
-  constructor(@InjectModel(Film.name) private filmModel: Model<Film>) {}
+export class FilmsRepositoryMongo implements IFilmsRepository {
+  constructor(
+    @InjectModel(FilmMongo.name) private filmModel: Model<FilmMongo>,
+  ) {}
 
   async getAllFilms(): Promise<{ total: number; items: FilmDto[] }> {
     const films = await this.filmModel
