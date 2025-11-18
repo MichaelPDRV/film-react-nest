@@ -1,5 +1,7 @@
 # FILM!
 
+Деплой проекта доступен по ссылке: [https://michaelpdrv-film.nomorepartiessbs.ru]
+
 ## Установка
 
 ### MongoDB

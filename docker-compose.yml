@@ -1,0 +1,84 @@
+services:
+  database:
+    image: postgres:16.4
+    container_name: database
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - internal
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - internal
+
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+    networks:
+      - internal
+    volumes:
+      - frontend_build:/app/dist
+
+  backend:
+    container_name: backend
+    restart: always
+    build:
+      context: backend
+    environment:
+      PORT: 3000
+      DATABASE_DRIVER: postgres
+      DATABASE_HOST: database
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
+    ports:
+      - "3000:3000"
+    networks:
+      - internal
+    depends_on:
+      - database
+    volumes:
+      - ./backend/public/content:/app/public/content 
+    
+
+  server:
+    container_name: server
+    build:
+      context: nginx
+    ports:
+      - "81:80"
+    networks:
+      - internal
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - frontend_build:/var/www
+      - ./backend/public/content:/var/www/content
+
+volumes:
+  db_data:
+  pgadmin-data:
+  frontend_build:
+
+networks:
+  internal:
