@@ -27,6 +27,7 @@
     "@storybook/react": "^8.1.11",
     "@storybook/react-vite": "^8.1.11",
     "@storybook/test": "^8.1.11",
+    "@types/express-session": "^1.18.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
@@ -40,6 +41,10 @@
     "storybook": "^8.1.11",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
+  },
+   "optionalDependencies": {
+    "rollup": "^4.53.2",
+     "@rollup/rollup-linux-x64-musl": "4.53.2"
   },
   "packageManager": "pnpm@8.10.2+sha1.e0b68270e89c817ff88b7be62466a2128c53af02"
 }
