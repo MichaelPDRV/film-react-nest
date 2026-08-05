@@ -247,8 +247,9 @@ docker-compose up -d --build
 3. Проект развёртывается на VPS (опционально — через SSH).
 
 ### Сервер
-Проект развёрнут на VPS в Yandex Cloud. Доступен по адресу:  
-🔗 [https://michaelpdrv-film.nomorepartiessbs.ru](https://michaelpdrv-film.nomorepartiessbs.ru)
+Проект развёртывался на VPS в Yandex Cloud.  
+В настоящий момент демо-версия временно недоступна — выполняется перенос на новый хостинг.  
+Ссылка будет обновлена после завершения миграции.
 
 ---
 
