@@ -6,8 +6,9 @@
 
 [![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions)](https://github.com/MichaelPDRV/film-react-nest/actions)
 
-<img src="./screenshots/film0.jpg" alt="Главная страница Film!" width="100%"/>
+🌐 **Демо-сайт:** [https://film.devbox.nx.kg](https://film.devbox.nx.kg)
 
+<img src="./screenshots/film0.jpg" alt="Главная страница Film!" width="100%"/>
 
 </div>
 
@@ -37,7 +38,7 @@
 | **CI/CD** | GitHub Actions, GitHub Container Registry (GHCR) |
 | **Веб-сервер** | Nginx (прокси для API и статики) |
 | **Фронтенд** | React, Vite, TypeScript, Storybook |
-| **Деплой** | Yandex Cloud (VPS) |
+| **Деплой** | VPS (Ubuntu), Docker Compose, Let's Encrypt SSL |
 
 ---
 
@@ -247,9 +248,9 @@ docker-compose up -d --build
 3. Проект развёртывается на VPS (опционально — через SSH).
 
 ### Сервер
-Проект развёртывался на VPS в Yandex Cloud.  
-В настоящий момент демо-версия временно недоступна — выполняется перенос на новый хостинг.  
-Ссылка будет обновлена после завершения миграции.
+Проект развёрнут на VPS (Ubuntu) с использованием **Docker Compose** и **Nginx** в качестве reverse-прокси. Все сервисы изолированы в контейнерах, HTTPS настроен через Let's Encrypt.
+
+🌐 **Живой демо-сайт:** [https://film.devbox.nx.kg](https://film.devbox.nx.kg)
 
 ---
 
@@ -267,7 +268,7 @@ docker-compose up -d --build
 ---
 
 ## 📌 Что дальше
-- [ ] Настроить HTTPS через Let's Encrypt.
+- [x] Настроить HTTPS через Let's Encrypt.
 - [ ] Добавить авторизацию и личный кабинет пользователя.
 - [ ] Настроить автоматический деплой при пуше в `main`.
 
@@ -275,7 +276,7 @@ docker-compose up -d --build
 
 ## 👨‍💻 Автор
 
-**Michael PDRV**
+**MichaelPDRV**
 
 [![GitHub](https://img.shields.io/badge/GitHub-MichaelPDRV-181717?style=flat-square&logo=github)](https://github.com/MichaelPDRV)
 [![Telegram](https://img.shields.io/badge/Telegram-@michaelpdrv-26A5E4?style=flat-square&logo=telegram)](https://t.me/michaelpdrv)
